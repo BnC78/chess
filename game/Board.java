@@ -11,7 +11,7 @@ public class Board extends JPanel {
     }
 
     private void createBoard() {
-        for (int i = 8; i >= 1; ++i) {
+        for (int i = 8; i >= 1; --i) {
             for (int j = (int)'a'; j <= (int)'h'; ++j) {
                 String tile = "" + (char) i + j;
                 JButton button = new JButton(tile);
