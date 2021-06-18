@@ -1,8 +1,8 @@
 package pieces;
 
 import javax.swing.JButton;
+import java.awt.Color;
 
-import misc.Color;
 import misc.Icons;
 
 public class Rook extends JButton {
@@ -11,6 +11,7 @@ public class Rook extends JButton {
     private boolean started;
 
     public Rook(Color color) {
+        super();
         this.setIcon((color == Color.WHITE ? Icons.WHITEROOK : Icons.BLACKROOK).getIcon());
         started = false;
         this.color = color;
