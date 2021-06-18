@@ -17,7 +17,7 @@ public class Application extends JFrame {
         setSize(800, 800);
         setResizable(false);
 
-        setTitle("Application");
+        setTitle("Chess");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }    
