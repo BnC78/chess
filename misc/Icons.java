@@ -19,7 +19,7 @@ public enum Icons {
 
     private Icons(String fileName) {
         try {
-            icon = new ImageIcon(ImageIO.read(new File("images/" + fileName)).getScaledInstance(80, 80, Image.SCALE_FAST));
+            icon = new ImageIcon(ImageIO.read(new File("chess/images/" + fileName)).getScaledInstance(80, 80, Image.SCALE_FAST));
         } catch (IOException ex) {
             System.err.println("Image import failed! Program will shut down");
             System.err.println(ex.getMessage());
