@@ -1,24 +1,17 @@
 package pieces;
 
-import javax.swing.JButton;
 import java.awt.Color;
 
 import misc.Icons;
 
-public class Rook extends JButton {
+public class Rook extends ChessPiece {
 
-    private Color color;
     private boolean started;
 
     public Rook(Color color) {
-        super();
+        super(color);
         this.setIcon((color == Color.WHITE ? Icons.WHITEROOK : Icons.BLACKROOK).getIcon());
         started = false;
-        this.color = color;
-    }
-
-    public Color getColor() {
-        return this.color;
     }
 
     public boolean isStarted() {
