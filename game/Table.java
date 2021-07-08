@@ -8,6 +8,8 @@ import pieces.ChessPiece;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Table extends JPanel {
     
@@ -23,12 +25,19 @@ public class Table extends JPanel {
     public void createTable() {
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                JButton cell = new JButton();
+                Cell cell = new Cell(i, j);
                 cell.setBackground(((i + j) % 2 == 0) ? Color.WHITE : Color.DARK_GRAY);
                 ChessPiece piece = board.getTile(i, j).getPiece();
                 if (piece != null) {
                     cell.setIcon(piece.getIcon());
                 }
+                cell.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Cell cell = (Cell) e.getSource();
+                        int row = cell.getRow();
+                        int column = cell.getColumn();
+                    }
+                });
                 this.add(cell);
             }
         }
