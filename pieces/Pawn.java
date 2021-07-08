@@ -1,16 +1,13 @@
 package pieces;
 
-import java.awt.Color;
-
 import misc.Icons;
 
 public class Pawn extends ChessPiece {
     
     private boolean started;
 
-    public Pawn(Color color) {
-        super(color);
-        this.setIcon((color == Color.WHITE ? Icons.WHITEPAWN : Icons.BLACKPAWN).getIcon());
+    public Pawn(boolean white) {
+        super(white, (white ? Icons.WHITEPAWN : Icons.BLACKPAWN).getIcon());
         started = false;
     }
 
@@ -21,4 +18,5 @@ public class Pawn extends ChessPiece {
     public void started() {
         this.started = true;
     }
+
 }

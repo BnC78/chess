@@ -1,16 +1,13 @@
 package pieces;
 
-import java.awt.Color;
-
 import misc.Icons;
 
 public class King extends ChessPiece {
 
     private boolean started;
 
-    public King(Color color) {
-        super(color);
-        this.setIcon((color == Color.WHITE ? Icons.WHITEKING : Icons.BLACKKING).getIcon());
+    public King(boolean white) {
+        super(white, (white ? Icons.WHITEKING : Icons.BLACKKING).getIcon());
         started = false;
     }
 
@@ -21,5 +18,5 @@ public class King extends ChessPiece {
     public void started() {
         this.started = true;
     }
-    
+
 }

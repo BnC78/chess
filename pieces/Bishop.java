@@ -1,14 +1,11 @@
 package pieces;
 
-import java.awt.Color;
-
 import misc.Icons;
 
 public class Bishop extends ChessPiece {
 
-    public Bishop(Color color) {
-        super(color);
-        this.setIcon((color == Color.WHITE ? Icons.WHITEBISHOP : Icons.BLACKBISHOP).getIcon());
+    public Bishop(boolean white) {
+        super(white, (white ? Icons.WHITEBISHOP : Icons.BLACKBISHOP).getIcon());
     }
     
 }

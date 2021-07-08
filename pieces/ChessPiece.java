@@ -1,18 +1,23 @@
 package pieces;
 
-import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.ImageIcon;
 
-public abstract class ChessPiece extends JButton {
+public abstract class ChessPiece {
     
-    private final Color color;
+    private final boolean white;
+    private final ImageIcon icon;
 
-    public ChessPiece(Color color) {
-        this.color = color;
+    public ChessPiece(boolean white, ImageIcon icon) {
+        this.white = white;
+        this.icon = icon;
     }
 
-    public Color getColor() {
-        return this.color;
+    public boolean isWhite() {
+        return this.white;
     }
-    
+
+    public ImageIcon getIcon() {
+        return this.icon;
+    }
+
 }

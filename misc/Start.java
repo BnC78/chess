@@ -1,67 +1,60 @@
 package misc;
 
-import javax.swing.JButton;
-import java.awt.Color;
+import game.Tile;
 
 import pieces.*;
 
 public class Start {
 
-    public static JButton[][] asWhite() {
-        JButton[][] board = emptyBoard();
-        board = addRow(Color.WHITE, board, true);
-        board = addRow(Color.BLACK, board, true);
-        for (int i = 0; i < board.length; ++i) {
-            board[1][i] = new Pawn(Color.BLACK);
-            board[6][i] = new Pawn(Color.WHITE);
-        }
+    public static Tile[][] asWhite() {
+        Tile[][] board = emptyBoard();
+        board = addRow(true, board, true);
+        board = addRow(false, board, true);
+        board = addPawns(true, board);
         return board;
     }
 
-    public static JButton[][] asBlack() {
-        JButton[][] board = emptyBoard();
-        board = addRow(Color.WHITE, board, false);
-        board = addRow(Color.BLACK, board, false);
-        for (int i = 0; i < board.length; ++i) {
-            board[1][i] = new Pawn(Color.WHITE);
-            board[6][i] = new Pawn(Color.BLACK);
-        }
+    public static Tile[][] asBlack() {
+        Tile[][] board = emptyBoard();
+        board = addRow(true, board, false);
+        board = addRow(false, board, false);
+        board = addPawns(false, board);
         return board;
     }
 
-    public static JButton[][] emptyBoard() {
-        JButton[][] board = new JButton[8][8];
+    private static Tile[][] emptyBoard() {
+        Tile[][] board = new Tile[8][8];
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                board[i][j] = new JButton();
+                board[i][j] = new Tile(null, i, j);
             }
         }
         return board;
     }
 
-    public static JButton[][] addRow(Color color, JButton[][] board, boolean asWhite) {
+    private static Tile[][] addRow(boolean white, Tile[][] board, boolean asWhite) {
         int row;
         if (asWhite) {
-            if (color == Color.WHITE) {
-                row = 7;
-            } else {
-                row = 0;
-            }
+            row = (white ? 7 : 0);
         } else {
-            if (color == Color.WHITE) {
-                row = 0;
-            } else {
-                row = 7;
-            }
+            row = (white ? 0 : 7);
         }
-        board[row][0] = new Rook(color);
-        board[row][1] = new Knight(color);
-        board[row][2] = new Bishop(color);
-        board[row][3] = asWhite ? new Queen(color) : new King(color);
-        board[row][4] = asWhite ? new King(color) : new Queen(color);
-        board[row][5] = new Bishop(color);
-        board[row][6] = new Knight(color);
-        board[row][7] = new Rook(color);
+        board[row][0].setPiece(new Rook(white));
+        board[row][1].setPiece(new Knight(white));
+        board[row][2].setPiece(new Bishop(white));
+        board[row][3].setPiece(asWhite ? new Queen(white) : new King(white));
+        board[row][4].setPiece(asWhite ? new King(white) : new Queen(white));
+        board[row][5].setPiece(new Bishop(white));
+        board[row][6].setPiece(new Knight(white));
+        board[row][7].setPiece(new Rook(white));
+        return board;
+    }
+
+    private static Tile[][] addPawns(boolean white, Tile[][] board) {
+        for (int i = 0; i < board.length; ++i) {
+            board[1][i].setPiece(new Pawn(white ? false : true));
+            board[6][i].setPiece(new Pawn(white ? true : false));
+        }
         return board;
     }
 }

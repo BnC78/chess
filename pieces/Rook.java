@@ -1,16 +1,13 @@
 package pieces;
 
-import java.awt.Color;
-
 import misc.Icons;
 
 public class Rook extends ChessPiece {
 
     private boolean started;
 
-    public Rook(Color color) {
-        super(color);
-        this.setIcon((color == Color.WHITE ? Icons.WHITEROOK : Icons.BLACKROOK).getIcon());
+    public Rook(boolean white) {
+        super(white, (white ? Icons.WHITEROOK : Icons.BLACKROOK).getIcon());
         started = false;
     }
 

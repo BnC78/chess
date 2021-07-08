@@ -12,7 +12,7 @@ public class Application extends JFrame {
 
     private void initUI() {
 
-        add(new Board(true));
+        add(new Table());
 
         setSize(800, 800);
         setResizable(false);
