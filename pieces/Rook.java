@@ -1,13 +1,14 @@
 package pieces;
 
 import misc.Icons;
+import misc.PieceType;
 
 public class Rook extends ChessPiece {
 
     private boolean started;
 
     public Rook(boolean white) {
-        super(white, (white ? Icons.WHITEROOK : Icons.BLACKROOK).getIcon());
+        super(PieceType.ROOK, white, (white ? Icons.WHITEROOK : Icons.BLACKROOK).getIcon());
         started = false;
     }
 

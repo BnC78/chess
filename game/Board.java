@@ -8,11 +8,13 @@ import pieces.ChessPiece;
 public class Board {
 
     private Tile[][] tiles;
+    private boolean whiteAtBottom;
     private Tile chosenTile;
     private Player currentPlayer;
 
     public Board(boolean white) {
         this.createBoard(white);
+        this.whiteAtBottom = white;
         this.chosenTile = null;
         this.currentPlayer = white ? Player.WHITE : Player.BLACK;
     }
@@ -27,6 +29,18 @@ public class Board {
 
     public boolean isEmptyTile(int row, int column) {
         return getTile(row, column).isEmpty();
+    }
+
+    public boolean isEnemyTile(int row, int column) {
+        return !isEmptyTile(row, column) && !isCurrentPlayersPiece(getTile(row, column).getPiece());
+    }
+
+    private boolean isWhiteAtBottom() {
+        return this.whiteAtBottom;
+    }
+
+    public boolean isAttackingUpwards() {
+        return (isWhiteAtBottom() && isCurrentPlayerWhite()) || (!isWhiteAtBottom() && !isCurrentPlayerWhite());
     }
 
     private Tile getChosenTile() {

@@ -1,11 +1,12 @@
 package pieces;
 
 import misc.Icons;
+import misc.PieceType;
 
 public class Knight extends ChessPiece {
 
     public Knight(boolean white) {
-        super(white, (white ? Icons.WHITEKNIGHT : Icons.BLACKKNIGHT).getIcon());
+        super(PieceType.KNIGHT, white, (white ? Icons.WHITEKNIGHT : Icons.BLACKKNIGHT).getIcon());
     }
 
 }

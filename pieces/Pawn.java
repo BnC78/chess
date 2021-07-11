@@ -1,13 +1,14 @@
 package pieces;
 
 import misc.Icons;
+import misc.PieceType;
 
 public class Pawn extends ChessPiece {
     
     private boolean started;
 
     public Pawn(boolean white) {
-        super(white, (white ? Icons.WHITEPAWN : Icons.BLACKPAWN).getIcon());
+        super(PieceType.PAWN, white, (white ? Icons.WHITEPAWN : Icons.BLACKPAWN).getIcon());
         started = false;
     }
 

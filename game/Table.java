@@ -3,12 +3,14 @@ package game;
 import javax.swing.JPanel;
 
 import misc.ChooseAction;
-import pieces.ChessPiece;
+import moves.Moves;
 
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import static moves.Moves.initializeMoves;
 
 public class Table extends JPanel {
     
@@ -28,9 +30,8 @@ public class Table extends JPanel {
                 Color bg = ((i + j) % 2 == 0) ? Color.WHITE : Color.DARK_GRAY;
                 Cell cell = new Cell(i, j, board.getTile(i, j), bg);
                 cells[i][j] = cell;
-                ChessPiece piece = board.getTile(i, j).getPiece();
                 if (!board.isEmptyTile(i, j)) {
-                    cell.setIcon(piece.getIcon());
+                    cell.setIcon(board.getTile(i, j).getPiece().getIcon());
                 }
                 cell.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -38,25 +39,28 @@ public class Table extends JPanel {
                         Tile tile = cell.getTile();
                         ChooseAction chooseAction = board.validateChoose(tile);
                         System.out.println(chooseAction);
+                        Moves moves = null;
                         switch (chooseAction) {
                             case CHOOSE:
                                 cell.choose();
+                                moves = initializeMoves(board, cells, cell);
+                                moves.showPossibleMoves();
                                 break;
                             case UNCHOOSE:
+                                refreshBackground();
                                 cell.unchoose();
                                 break;
                             case SWAP:
                                 refreshBackground();
                                 cell.choose();
+                                moves = initializeMoves(board, cells, cell);
+                                moves.showPossibleMoves();
                                 break;
                             case MOVE:
                                 break;
                             case INVALID:
                                 refreshBackground();
                                 break;
-                            default:
-                                break;
-                            
                         }
                     }
                 });

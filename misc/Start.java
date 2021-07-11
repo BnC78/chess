@@ -11,6 +11,9 @@ public class Start {
         board = addRow(true, board, true);
         board = addRow(false, board, true);
         board = addPawns(true, board);
+        board[5][0].setPiece(new Pawn(false));
+        board[5][2].setPiece(new Pawn(false));
+        board[5][3].setPiece(new Pawn(false));
         return board;
     }
 
