@@ -5,14 +5,18 @@ import game.Cell;
 
 public abstract class Moves {
     
-    private final Board board;
+    protected final Board board;
     private final Cell[][] cells;
-    private final Cell currentCell;
+    protected final Cell currentCell;
+    protected final int row;
+    protected final int column;
 
     protected Moves(Board board, Cell[][] cells, Cell currentCell) {
         this.board = board;
         this.cells = cells;
         this.currentCell = currentCell;
+        this.row = currentCell.getRow();
+        this.column = currentCell.getColumn();
     }
 
     public static Moves initializeMoves(Board board, Cell[][] cells, Cell currentCell) {
@@ -34,16 +38,8 @@ public abstract class Moves {
         }
     }
 
-    protected Board getBoard() {
-        return this.board;
-    }
-
     protected Cell getCell(int row, int column) {
         return this.cells[row][column];
-    }
-
-    protected Cell getCurrentCell() {
-        return this.currentCell;
     }
 
     abstract public void showPossibleMoves();

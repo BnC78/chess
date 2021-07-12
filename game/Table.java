@@ -8,6 +8,7 @@ import moves.Moves;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
 import static moves.Moves.initializeMoves;
@@ -72,10 +73,8 @@ public class Table extends JPanel {
     }
 
     private void refreshBackground() {
-        for (int i = 0; i < 8; ++i) {
-            for (int j = 0; j < 8; ++j) {
-                cells[i][j].setBackgroundToDefault();
-            }
-        }
+        Arrays.stream(cells)
+              .flatMap(row -> Arrays.stream(row))
+              .forEach(cell -> cell.setBackgroundToDefault());
     }
 }

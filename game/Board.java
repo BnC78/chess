@@ -16,7 +16,7 @@ public class Board {
         this.createBoard(white);
         this.whiteAtBottom = white;
         this.chosenTile = null;
-        this.currentPlayer = white ? Player.WHITE : Player.BLACK;
+        this.currentPlayer = Player.WHITE;
     }
 
     private void createBoard(boolean white) {

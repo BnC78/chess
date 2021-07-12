@@ -12,22 +12,20 @@ public class PawnMoves extends Moves {
 
     @Override
     public void showPossibleMoves() {
-        int row = getCurrentCell().getRow();
-        int column = getCurrentCell().getColumn();
         int modifier = -1;
-        if (!getBoard().isAttackingUpwards()) {
+        if (!board.isAttackingUpwards()) {
             modifier = 1;
         }
-        if (getBoard().isEmptyTile(row+modifier, column)) {
+        if (board.isEmptyTile(row+modifier, column)) {
             getCell(row+modifier, column).possibleMove();
-            if (!((Pawn) getCurrentCell().getTile().getPiece()).isStarted() && getBoard().isEmptyTile(row+2*modifier, column)) {
+            if (!((Pawn) currentCell.getTile().getPiece()).isStarted() && board.isEmptyTile(row+2*modifier, column)) {
                 getCell(row+2*modifier, column).possibleMove();
             }
         }
-        if (column > 0 && getBoard().isEnemyTile(row+modifier, column-1)) {
+        if (column > 0 && board.isEnemyTile(row+modifier, column-1)) {
             getCell(row+modifier, column-1).possibleAttack();
         }
-        if (column < 7 && getBoard().isEnemyTile(row+modifier, column+1)) {
+        if (column < 7 && board.isEnemyTile(row+modifier, column+1)) {
             getCell(row+modifier, column+1).possibleAttack();
         }
     }
