@@ -12,8 +12,7 @@ public class Start {
         board = addRow(false, board, true);
         board = addPawns(true, board);
         //Test
-        board[4][4].setPiece(new Rook(true));
-        board[4][0].setPiece(new Rook(false));
+        board[4][5].setPiece(new Queen(true));
 
         return board;
     }

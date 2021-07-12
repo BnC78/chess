@@ -11,9 +11,14 @@ public class QueenMoves extends Moves {
 
     @Override
     public void showPossibleMoves() {
-        // TODO Auto-generated method stub
-        
+        checkLeft();
+        checkRight();
+        checkUp();
+        checkDown();
+        checkUpLeft();
+        checkUpRight();
+        checkDownLeft();
+        checkDownRight();
     }
     
-
 }

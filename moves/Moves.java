@@ -43,4 +43,94 @@ public abstract class Moves {
     }
 
     abstract public void showPossibleMoves();
+
+    //Common moves (Rook, Queen)
+    protected void checkLeft() {
+        int modifier = 1;
+        while ((column-modifier) >= 0 && board.isEmptyTile(row, column-modifier)) {
+            getCell(row, column-modifier).possibleMove();
+            ++modifier;
+        }
+        if ((column-modifier) >= 0 && board.isEnemyTile(row, column-modifier)) {
+            getCell(row, column-modifier).possibleAttack();
+        }
+    }
+    
+    protected void checkRight() {
+        int modifier = 1;
+        while ((column+modifier) <= 7 && board.isEmptyTile(row, column+modifier)) {
+            getCell(row, column+modifier).possibleMove();
+            ++modifier;
+        }
+        if ((column+modifier) <= 7 && board.isEnemyTile(row, column+modifier)) {
+            getCell(row, column+modifier).possibleAttack();
+        }
+    }
+    
+    protected void checkUp() {
+        int modifier = 1;
+        while ((row-modifier) >= 0 && board.isEmptyTile(row-modifier, column)) {
+            getCell(row-modifier, column).possibleMove();
+            ++modifier;
+        }
+        if ((row-modifier) >= 0 && board.isEnemyTile(row-modifier, column)) {
+            getCell(row-modifier, column).possibleAttack();
+        }
+    }
+    
+    protected void checkDown() {
+        int modifier = 1;
+        while ((row+modifier) <= 7 && board.isEmptyTile(row+modifier, column)) {
+            getCell(row+modifier, column).possibleMove();
+            ++modifier;
+        }
+        if ((row+modifier) <= 7 && board.isEnemyTile(row+modifier, column)) {
+            getCell(row+modifier, column).possibleAttack();
+        }
+    }
+
+    //Common moves (Bishop, Queen)
+    protected void checkUpLeft() {
+        int modifier = 1;
+        while ((row-modifier) >= 0 && (column-modifier) >= 0 && board.isEmptyTile(row-modifier, column-modifier)) {
+            getCell(row-modifier, column-modifier).possibleMove();
+            ++modifier;
+        }
+        if ((row-modifier) >= 0 && (column-modifier) >= 0 && board.isEnemyTile(row-modifier, column-modifier)) {
+            getCell(row-modifier, column-modifier).possibleAttack();
+        }
+    }
+
+    protected void checkUpRight() {
+        int modifier = 1;
+        while ((row-modifier) >= 0 && (column+modifier) <= 7 && board.isEmptyTile(row-modifier, column+modifier)) {
+            getCell(row-modifier, column+modifier).possibleMove();
+            ++modifier;
+        }
+        if ((row-modifier) >= 0 && (column+modifier) <= 7 && board.isEnemyTile(row-modifier, column+modifier)) {
+            getCell(row-modifier, column+modifier).possibleAttack();
+        }
+    }
+
+    protected void checkDownLeft() {
+        int modifier = 1;
+        while ((row+modifier) <= 7 && (column-modifier) >= 0 && board.isEmptyTile(row+modifier, column-modifier)) {
+            getCell(row+modifier, column-modifier).possibleMove();
+            ++modifier;
+        }
+        if ((row+modifier) <= 7 && (column-modifier) >= 0 && board.isEnemyTile(row+modifier, column-modifier)) {
+            getCell(row+modifier, column-modifier).possibleAttack();
+        }
+    }
+
+    protected void checkDownRight() {
+        int modifier = 1;
+        while ((row+modifier) <= 7 && (column+modifier) <= 7 && board.isEmptyTile(row+modifier, column+modifier)) {
+            getCell(row+modifier, column+modifier).possibleMove();
+            ++modifier;
+        }
+        if ((row+modifier) <= 7 && (column+modifier) <= 7 && board.isEnemyTile(row+modifier, column+modifier)) {
+            getCell(row+modifier, column+modifier).possibleAttack();
+        }
+    }
 }

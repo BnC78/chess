@@ -11,9 +11,10 @@ public class BishopMoves extends Moves {
 
     @Override
     public void showPossibleMoves() {
-        // TODO Auto-generated method stub
-        
+        checkUpLeft();
+        checkUpRight();
+        checkDownLeft();
+        checkDownRight();
     }
-    
 
 }
