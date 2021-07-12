@@ -2,24 +2,24 @@ package game;
 
 import javax.swing.JButton;
 
+import misc.Colors;
+
 import java.awt.Color;
 
 public class Cell extends JButton {
 
     private final int row;
     private final int column;
-    private final Tile tile;
 
     private final Color defaultBg;
-    private static final Color chosenBg = new Color(4, 146,194);
-    private static final Color possibleMoveBg = new Color(250, 226, 156);
-    private static final Color possibleAttackBg = new Color(188, 84, 75);
+    private static final Color chosenBg = Colors.CHOSEN;
+    private static final Color possibleMoveBg = Colors.POSSIBLE_MOVE;
+    private static final Color possibleAttackBg = Colors.POSSIBLE_ATTACK;
 
-    public Cell(int row, int column, Tile tile, Color defaultBg) {
+    public Cell(int row, int column, Color defaultBg) {
         super();
         this.row = row;
         this.column = column;
-        this.tile = tile;
         this.defaultBg = defaultBg;
         this.setBackground(defaultBg);
     }
@@ -30,10 +30,6 @@ public class Cell extends JButton {
 
     public int getColumn() {
         return this.column;
-    }
-
-    public Tile getTile() {
-        return this.tile;
     }
 
     public void setBackgroundToDefault() {

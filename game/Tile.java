@@ -26,6 +26,10 @@ public class Tile {
         return this.piece == null;
     }
 
+    public void setEmpty() {
+        setPiece(null);
+    }
+
     public int getRow() {
         return this.row;
     }

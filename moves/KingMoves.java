@@ -11,9 +11,10 @@ public class KingMoves extends Moves {
 
     @Override
     public void showPossibleMoves() {
-        // TODO Auto-generated method stub
-        
+        for (int i = -1; i <= 1; ++i) {
+            for (int j = -1; j <= 1; ++j) {
+                checkCell(row+i, column+j);
+            }
+        }
     }
-    
-
 }

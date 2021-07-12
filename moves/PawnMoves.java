@@ -18,7 +18,7 @@ public class PawnMoves extends Moves {
         }
         if (board.isEmptyTile(row+modifier, column)) {
             getCell(row+modifier, column).possibleMove();
-            if (!((Pawn) currentCell.getTile().getPiece()).isStarted() && board.isEmptyTile(row+2*modifier, column)) {
+            if (!((Pawn) board.getTile(row, column).getPiece()).isStarted() && board.isEmptyTile(row+2*modifier, column)) {
                 getCell(row+2*modifier, column).possibleMove();
             }
         }

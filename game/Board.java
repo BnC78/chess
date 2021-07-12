@@ -1,9 +1,12 @@
 package game;
 
 import misc.ChooseAction;
+import misc.Colors;
 import misc.Player;
 import misc.Start;
 import pieces.ChessPiece;
+
+import java.awt.Color;
 
 public class Board {
 
@@ -27,6 +30,10 @@ public class Board {
         return this.tiles[row][column];
     }
 
+    private void setTile(int row, int column, Tile tile) {
+        this.tiles[row][column] = new Tile(tile.getPiece(), row, column);
+    }
+
     public boolean isEmptyTile(int row, int column) {
         return getTile(row, column).isEmpty();
     }
@@ -43,7 +50,7 @@ public class Board {
         return (isWhiteAtBottom() && isCurrentPlayerWhite()) || (!isWhiteAtBottom() && !isCurrentPlayerWhite());
     }
 
-    private Tile getChosenTile() {
+    public Tile getChosenTile() {
         return this.chosenTile;
     }
 
@@ -51,7 +58,9 @@ public class Board {
         this.chosenTile = tile;
     }
 
-    public ChooseAction validateChoose(Tile tile) {
+    public ChooseAction validateChoose(int row, int column, Color cellStatus) {
+        System.out.println(hasChosenTile());
+        Tile tile = getTile(row, column);
         if (getChosenTile() == tile) {
             unchooseTile();
             return ChooseAction.UNCHOOSE;
@@ -61,18 +70,22 @@ public class Board {
             chooseTile(tile);
             return hasChosenTile ? ChooseAction.SWAP : ChooseAction.CHOOSE;
         }
-        if (isValidMove(tile)) {
+        if (isValidMove(cellStatus)) {
+            setTile(tile.getRow(), tile.getColumn(), chosenTile);
+            this.chosenTile.setEmpty();
+            unchooseTile();
+            nextPlayer();
             return ChooseAction.MOVE;
         }
         unchooseTile();
         return ChooseAction.INVALID;
     }
 
-    private boolean isValidMove(Tile tile) {
-        if (!hasChosenTile()) {
-            return false;
+    private boolean isValidMove(Color cellStatus) {
+        if (hasChosenTile() && (cellStatus == Colors.POSSIBLE_MOVE || cellStatus == Colors.POSSIBLE_ATTACK)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean hasChosenTile() {

@@ -11,8 +11,14 @@ public class KnightMoves extends Moves {
 
     @Override
     public void showPossibleMoves() {
-        // TODO Auto-generated method stub
-        
+        checkCell(row-2, column-1);
+        checkCell(row-2, column+1);
+        checkCell(row-1, column-2);
+        checkCell(row-1, column+2);
+        checkCell(row+1, column-2);
+        checkCell(row+1, column+2);
+        checkCell(row+2, column-1);
+        checkCell(row+2, column+1);
     }
     
 
